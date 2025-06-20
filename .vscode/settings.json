@@ -1,0 +1,9 @@
+{
+	"files.readonlyInclude": {
+		"extern/**": true
+	},
+	"workbench.colorCustomizations": {
+		"minimap.background": "#00000080",
+		"scrollbar.shadow": "#00000080"
+	},
+}
