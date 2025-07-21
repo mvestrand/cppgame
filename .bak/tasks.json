@@ -1,0 +1,15 @@
+{
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "command": "debug_compilation_commands.cmd",
+            "problemMatcher":[],
+        }
+    ],  
+    "version": "2.0.0"
+}

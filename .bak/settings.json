@@ -1,0 +1,20 @@
+{
+	"files.readonlyInclude": {
+		"extern/**": true
+	},
+	"files.exclude":{
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"**/.sconsign.dblite": true,
+		"src/**/*.obj": true,
+		"build": true,
+		"__pycache__": true,
+	},
+	"files.associations": {
+		"flecs.h": "c"
+	},
+}
