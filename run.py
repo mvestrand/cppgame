@@ -7,4 +7,4 @@ def sh(command, echo=True):
     p = subprocess.run(shlex.split(command), shell=True)
 
 if __name__ == '__main__':    
-    sh("./target/Debug/SimpleApp.exe")
+    sh("./target/Debug/CppGame.exe")

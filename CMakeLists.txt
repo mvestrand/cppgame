@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15...3.31)
 
 project(
-	SimpleFlecsApp
+	CppGame
 	VERSION 0.1
 	LANGUAGES C CXX)
 
@@ -12,7 +12,7 @@ set(CUR_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(FLECS_LIB flecs::flecs_static)
 
-set(TARGET_NAME SimpleApp)
+set(TARGET_NAME CppGame)
 set(TARGET_DIR ${CUR_DIR})
 
 

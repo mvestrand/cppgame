@@ -6,4 +6,13 @@
 		"minimap.background": "#00000080",
 		"scrollbar.shadow": "#00000080"
 	},
+	"files.associations": {
+		"xstring": "cpp",
+		"istream": "cpp",
+		"chrono": "cpp",
+		"format": "cpp",
+		"thread": "cpp",
+		"vector": "cpp",
+		"future": "cpp"
+	},
 }

@@ -8,5 +8,5 @@ def sh(command, echo=True):
     
 
 if __name__ == '__main__':
-    sh("cmake -S . -B target")
+    sh("cmake -S . -B target -Wno-deprecated")
     sh("cmake --build target")
