@@ -1,27 +1,27 @@
-#include "console_input.h"
-
 #include <flecs.h>
 
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <string>
+#include <unordered_map>
 
+#include "Repl.hpp"
 
 using flecs::world;
 using flecs::entity;
 
 using namespace std;
+using namespace soba;
 
-
-void handle_input(string input) {
-    cout << "'" << input << "'" << endl << flush;
-}
 
 int main(int argc, char *argv[]) {
+    Repl repl;
     int frame_num = 0;
     while (true) {
-        if (handle_console_input(handle_input))
-            cout << frame_num << endl << flush;
+        repl.readline_async();
+        // if (handle_console_input(handle_input))
+        //     cout << frame_num << endl << flush;
 
         this_thread::sleep_for(16ms);
         frame_num++;
