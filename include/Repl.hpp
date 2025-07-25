@@ -5,17 +5,20 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <iostream>
 
 #include "GameProvider.hpp"
+
+
 
 namespace soba {
 
     /** A shell for running custom commands in an app. */
-    class Repl {
+    class Repl : public GameProvider {
     public:
 
         /** Base class to use for commands that can be registered with the `Repl` */
-        class Command : GameProvider {
+        class Command {
         public:
             virtual ~Command() {}
             /** The command's name. This can be different from the name
@@ -67,6 +70,11 @@ namespace soba {
     public:
         Repl();
         ~Repl();
+
+        std::istream in;
+        std::ostream out;
+        std::ostream err;
+
         
         /** Processes input from stdin without blocking.
          * Starts an async read of at least a full line of input from stdin and 
@@ -119,7 +127,6 @@ namespace soba {
         /** Print error text to the Repl.
          */
         void print_err(std::string const &msg);
-
         /** Iterate commands.
          */
         CommandMap::iterator begin();

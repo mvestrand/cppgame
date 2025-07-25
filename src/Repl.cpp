@@ -13,13 +13,6 @@
 using namespace std;
 
 
-static string stdin_getline() {    
-    string line;
-    cout << "> " << flush;
-    getline(cin, line);
-    return line;
-}
-
 namespace soba {
     using CommandMap = Repl::CommandMap;
     using Command = Repl::Command;
@@ -29,13 +22,23 @@ namespace soba {
         repl.parse_args(cmd_str, args);
     }
 
-    Repl::Repl() {}
+    Repl::Repl() : in(cin.rdbuf()), out(cout.rdbuf()), err(cerr.rdbuf()) { 
+    }
     Repl::~Repl() {}
+
+    static string repl_getline(streambuf *in_buf, streambuf *out_buf) {    
+        istream in(in_buf);
+        ostream out(out_buf);
+        string line;
+        out << "> " << flush;
+        getline(in, line);
+        return line;
+    }
 
     bool Repl::process_stdin() {
         static future<string> future_input;
         if (!future_input.valid()) {
-            future_input = async(stdin_getline);
+            future_input = async(repl_getline, this->in.rdbuf(), this->err.rdbuf());
         }
         if (future_input.wait_for(0ms) == future_status::ready) {
             string line = future_input.get();
@@ -111,7 +114,7 @@ namespace soba {
     CommandMap::const_iterator Repl::end() const { return commands.end(); }
 
     void Repl::print(string const &msg) {
-        LOG(msg);
+        cout << msg << endl;
     }
     void Repl::print_warn(string const &msg) {
         WARN(msg);

@@ -12,8 +12,8 @@ namespace soba {
             std::weak_ptr<Game> _game;
         public:
             bool get_game(std::shared_ptr<Game> &game) const;
-            void set_game(std::shared_ptr<Game> const &game);
-            void disconnect_game();
+            void attach_game(std::shared_ptr<Game> const &game);
+            void detach_game();
     };
 
 }

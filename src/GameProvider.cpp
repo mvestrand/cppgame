@@ -14,11 +14,11 @@ namespace soba {
         }
     }
 
-    void GameProvider::set_game(shared_ptr<Game> const &game) {
+    void GameProvider::attach_game(shared_ptr<Game> const &game) {
         _game = game;
     }
 
-    void GameProvider::disconnect_game() {
+    void GameProvider::detach_game() {
         _game.reset();
     }
 }

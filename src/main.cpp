@@ -7,6 +7,7 @@
 #include <unordered_map>
 
 #include "Repl.hpp"
+#include "Game.hpp"
 
 using flecs::world;
 using flecs::entity;
@@ -14,44 +15,32 @@ using flecs::entity;
 using namespace std;
 using namespace soba;
 
-int main(int argc, char *argv[]) {
-    auto ecs = flecs::world();
-    Repl repl;
-    int frame_num = 0;
-    while (true) {
-        repl.process_stdin();
-        this_thread::sleep_for(16ms);
-        frame_num++;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // flecs::world ecs(argc, argv);
-    // ecs.import<flecs::stats>();
-    // ecs.set<flecs::Rest>({});
+void setup_ecs(flecs::world &ecs) {
+    ecs.import<flecs::stats>();
+    ecs.set<flecs::Rest>({});
 
     // entity UseMyPipeline = ecs.entity();
     // entity my_pipeline = ecs.pipeline()
     //     .with(UseMyPipeline)
     //     .build();
+    
+}
 
-    // while (ecs.progress()) {
+int main(int argc, char *argv[]) {
+    auto game = make_shared<Game>();
+    Repl repl;
+    repl.attach_game(game);
 
-    // }
+    game->ecs = flecs::world(argc, argv);
+    flecs::world &ecs = game->ecs;
+    setup_ecs(ecs);
+
+    while (!game->should_quit) {
+        ecs.progress();
+        repl.process_stdin();
+        this_thread::sleep_for(16ms);
+        game->frame_num++;
+    }
 
     // Start Frame
     // - Fixed time-step(s) (16 ms)
