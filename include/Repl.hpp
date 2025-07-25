@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "GameProvider.hpp"
+
 namespace soba {
 
     /** A shell for running custom commands in an app. */
@@ -13,7 +15,7 @@ namespace soba {
     public:
 
         /** Base class to use for commands that can be registered with the `Repl` */
-        class Command {
+        class Command : GameProvider {
         public:
             virtual ~Command() {}
             /** The command's name. This can be different from the name
@@ -65,7 +67,7 @@ namespace soba {
     public:
         Repl();
         ~Repl();
-
+        
         /** Processes input from stdin without blocking.
          * Starts an async read of at least a full line of input from stdin and 
          * attempts to run that input as a command.

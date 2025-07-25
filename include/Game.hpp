@@ -7,8 +7,6 @@ namespace soba {
 
     class Game {
 
-    public:
-        Repl repl;
     };
 
 }
