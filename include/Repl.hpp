@@ -82,7 +82,7 @@ namespace soba {
          *
          * @return `true` if a line was read, `false` otherwise.
          */
-        bool process_stdin();
+        bool process_input();
 
         /** Add a new name link to a command.
          * This can be used to add entirely new commands, alias existing 

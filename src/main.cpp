@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
 
     while (!game->should_quit) {
         ecs.progress();
-        repl.process_stdin();
+        repl.process_input();
         this_thread::sleep_for(16ms);
         game->frame_num++;
     }

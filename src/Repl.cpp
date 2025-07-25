@@ -35,7 +35,7 @@ namespace soba {
         return line;
     }
 
-    bool Repl::process_stdin() {
+    bool Repl::process_input() {
         static future<string> future_input;
         if (!future_input.valid()) {
             future_input = async(repl_getline, this->in.rdbuf(), this->err.rdbuf());
