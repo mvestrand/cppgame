@@ -14,18 +14,31 @@ using flecs::entity;
 using namespace std;
 using namespace soba;
 
-
 int main(int argc, char *argv[]) {
+    auto ecs = flecs::world();
     Repl repl;
     int frame_num = 0;
     while (true) {
-        repl.readline_async();
-        // if (handle_console_input(handle_input))
-        //     cout << frame_num << endl << flush;
-
+        repl.process_stdin();
         this_thread::sleep_for(16ms);
         frame_num++;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // flecs::world ecs(argc, argv);
     // ecs.import<flecs::stats>();
