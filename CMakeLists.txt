@@ -27,6 +27,7 @@ include(${FLECS_DIR}/cmake/target_default_compile_functions.cmake)
 file(GLOB_RECURSE INC include/*.h include/*.hpp)
 file(GLOB_RECURSE SRC src/*.c src/*.cpp)
 add_executable(${TARGET_NAME} ${SRC} ${INC})
+set_property(TARGET ${TARGET_NAME} PROPERTY CXX_STANDARD 20)
 message(STATUS "INC=${INC}")
 message(STATUS "SRC=${SRC}")
 

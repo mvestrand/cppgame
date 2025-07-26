@@ -1,5 +1,7 @@
 #include "repl_commands.hpp"
 
+#include <format>
+
 #include "Game.hpp"
 
 using namespace std;
@@ -10,18 +12,22 @@ namespace soba {
     string ReplHelp::name() const { return "help"; }
     string ReplHelp::brief() const { return "Print help info about a command."; }
     void ReplHelp::print_usage(Repl &repl, string const &name) const {
-        repl.print(this->name() + "\n"
-            "Usage: \n" +
-            name + " [COMMAND]\n"
-            "\tPrint out help info about COMMAND.\n"
-            "\n" + name + " .\n"
-            "\tList all commands.");
+        // // repl.out << this->name() << "\n"
+        // repl.out << format(
+        //     "{0}\n"
+        //     "\t{1} <command>"
+        // ) << endl;
+        // repl.print(this->name() + "\n"
+        //     "Usage: \n" +
+        //     name + " [COMMAND]\n"
+        //     "\tPrint out help info about COMMAND.\n"
+        //     "\n" + name + " .\n"
+        //     "\tList all commands.");
     }
     void ReplHelp::list_commands(Repl &repl) const {
-
-    }    
+    }
     int ReplHelp::invoke(Repl &repl, vector<string> &args) {
-        repl.print("Usage: "+args[0]+ " [COMMAND] \n"
+        repl.print("Usage: "+args[0]+ " [COMMAND]\n"
             "Prints out help info about a command.\n"
         );
         return 0;
